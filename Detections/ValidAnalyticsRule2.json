@@ -1,0 +1,66 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "workspace": {
+            "type": "String"
+        }
+    },
+    "resources": [
+        {
+            "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/7ec29172-c6ed-4635-907b-79b1a8899ed5')]",
+            "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/7ec29172-c6ed-4635-907b-79b1a8899ed5')]",
+            "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules",
+            "kind": "Scheduled",
+            "apiVersion": "2021-03-01-preview",
+            "properties": {
+                "displayName": "Valid Analytics Rule 2",
+                "description": "",
+                "severity": "Medium",
+                "enabled": true,
+                "query": "Heartbeat\r\n| take 10",
+                "queryFrequency": "PT5H",
+                "queryPeriod": "PT5H",
+                "triggerOperator": "GreaterThan",
+                "triggerThreshold": 0,
+                "suppressionDuration": "PT5H",
+                "suppressionEnabled": false,
+                "tactics": [],
+                "alertRuleTemplateName": null,
+                "incidentConfiguration": {
+                    "createIncident": false,
+                    "groupingConfiguration": {
+                        "enabled": false,
+                        "reopenClosedIncident": false,
+                        "lookbackDuration": "PT5H",
+                        "matchingMethod": "AllEntities",
+                        "groupByEntities": [],
+                        "groupByAlertDetails": [],
+                        "groupByCustomDetails": []
+                    }
+                },
+                "eventGroupingSettings": {
+                    "aggregationKind": "SingleAlert"
+                },
+                "alertDetailsOverride": null,
+                "customDetails": null,
+                "entityMappings": null
+            }
+        },
+        {
+            "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/7ec29172-c6ed-4635-907b-79b1a8899ed5/actions/c1735e730755447d90ca6fdcd56bc756')]",
+            "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/7ec29172-c6ed-4635-907b-79b1a8899ed5/c1735e730755447d90ca6fdcd56bc756')]",
+            "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules/actions",
+            "apiVersion": "2021-03-01-preview",
+            "properties": {
+                "ruleId": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/7ec29172-c6ed-4635-907b-79b1a8899ed5')]",
+                "triggerUri": "[listCallbackURL(concat('/subscriptions/fdee8146-8bcf-460f-86f3-3f788c285efd/resourceGroups/OmsSecurity-Common/providers/Microsoft.Logic/workflows/ShaySentinelEU','/triggers/When_a_response_to_an_Azure_Sentinel_alert_is_triggered'),'2016-06-01').value]",
+                "logicAppResourceId": "/subscriptions/fdee8146-8bcf-460f-86f3-3f788c285efd/resourceGroups/OmsSecurity-Common/providers/Microsoft.Logic/workflows/ShaySentinelEU",
+                "operatesOn": "Alert"
+            },
+            "dependsOn": [
+                "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/7ec29172-c6ed-4635-907b-79b1a8899ed5')]"
+            ]
+        }
+    ]
+}
