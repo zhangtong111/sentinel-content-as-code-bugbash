@@ -18,7 +18,7 @@
                 "description": "DESCRIPTION CHECK",
                 "severity": "High",
                 "enabled": true,
-                "query": "BAD QUERY",
+                "query": "SecurityAlert | take 10",
                 "queryFrequency": "PT5H",
                 "queryPeriod": "PT5H",
                 "triggerOperator": "GreaterThan",

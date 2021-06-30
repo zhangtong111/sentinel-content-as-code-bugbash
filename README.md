@@ -13,7 +13,7 @@ This branch contains 3 valid alert rules in the detections folder:
 - Upon a successful connection - wait for the action to trigger
 
 #### Expected Result:
-- The Workflow should result in Failure, with a message saying 2 of 3 deploymets were successful
+- The Workflow should result in Failure, with a message: *1 of 3 deploymets failed*
 - When the workflow finishes, navigate to your analytics blade and verify the 2 valid rules are there
 
 #### For further testing: 
