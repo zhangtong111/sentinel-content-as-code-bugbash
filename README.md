@@ -8,7 +8,7 @@ This branch contains a single valid ARM template for a scheduled analytics rule,
 #### Testing instructions
 
 - Create the connection for branch `bugbash-4` on the target sentinel workspace
-![content2](https://raw.githubusercontent.com/erant10/sentinel-content-as-code-bugbash/bugbash-4/Images/bb4-connect.png)
+![content2](https://raw.githubusercontent.com/erant10/sentinel-content-as-code-bugbash/bugbash-4/Images/bb4-connect1.png)
 
 - Upon a successful connection - wait for the action to trigger
 ![content3](https://raw.githubusercontent.com/erant10/sentinel-content-as-code-bugbash/bugbash-4/Images/running.png)
