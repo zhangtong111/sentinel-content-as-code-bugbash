@@ -3,9 +3,7 @@
 #### Test Case:
 
 This branch contains 3 valid alert rules in the detections folder:
-1. ValidAnalyticsRule-MicrosoftSecurity.json
-2. ValidAnalyticRule1.json
-3. ValidAnalyticsRule2.json
+![content](https://github.com/erant10/sentinel-content-as-code-bugbash/blob/bugbash-1/Images/bugbash-1?raw=true)
 
 #### Testing instructions
 
