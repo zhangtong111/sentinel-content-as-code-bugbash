@@ -14,7 +14,7 @@
             "kind": "Scheduled",
             "apiVersion": "2021-03-01-preview",
             "properties": {
-                "displayName": "Invalid Analytic Rule 1",
+                "displayName": "Analytic Rule with Bad Query",
                 "description": "DESCRIPTION CHECK",
                 "severity": "High",
                 "enabled": true,
