@@ -3,7 +3,7 @@
 #### Test Case:
 
 This branch contains 3 valid alert rules in the detections folder:
-![content](https://github.com/erant10/sentinel-content-as-code-bugbash/blob/bugbash-1/Images/bugbash-1?raw=true)
+![content](https://github.com/erant10/sentinel-content-as-code-bugbash/blob/bugbash-1/Images/bugbash1?raw=true)
 
 #### Testing instructions
 
