@@ -8,10 +8,10 @@ This branch contains a single ARM template for a workbook in the Detections fold
 #### Testing instructions
 
 - Create the connection for branch `bugbash-3` on the target sentinel workspace
-![content2](https://raw.githubusercontent.com/erant10/sentinel-content-as-code-bugbash/bugbash-3/Images/bb2-content.png)
+![content2](https://raw.githubusercontent.com/erant10/sentinel-content-as-code-bugbash/bugbash-3/Images/bb3-content.png)
 
 - Upon a successful connection - wait for the action to trigger
-![content3](https://raw.githubusercontent.com/erant10/sentinel-content-as-code-bugbash/bugbash-3/Images/bb3-content.png)
+![content3](https://raw.githubusercontent.com/erant10/sentinel-content-as-code-bugbash/bugbash-3/Images/bb3-connect.png)
 
 #### Expected Result:
 - The workflow should result in failure, and the workbook should not get deployed
