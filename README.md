@@ -19,6 +19,8 @@ This branch contains a single valid ARM template for a scheduled analytics rule,
 
 #### Further Testing
 Rename the `Templates` folder to `Detections` (no need to clone to your local machine, you can edit directly on github), and click commit changes.
+![content7](https://raw.githubusercontent.com/erant10/sentinel-content-as-code-bugbash/bugbash-4/Images/rename.png)
+
 ![content5](https://raw.githubusercontent.com/erant10/sentinel-content-as-code-bugbash/bugbash-4/Images/commit.png)
 
 After commiting the change, wait for the action to finish successfully and make sure the rule exists in the analytics gallery
