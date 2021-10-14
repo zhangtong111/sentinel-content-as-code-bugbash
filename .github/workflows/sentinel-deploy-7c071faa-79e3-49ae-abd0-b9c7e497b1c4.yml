@@ -1,10 +1,10 @@
-name: Deploy Content to Azure Sentinel
+name: Deploy Content to eco-debandfriends
 on: 
   push:
     branches: [ bugbash-1 ]
     paths:
-    - 'Detections/**'
-    - '.github/workflows/sentinel-deploy**'
+    - '**'
+    - '.github/workflows/sentinel-deploy-7c071faa-79e3-49ae-abd0-b9c7e497b1c4.yml'
 
 jobs:
   deploy-content:
@@ -12,7 +12,7 @@ jobs:
     env:
       resourceGroupName: 'debandfriends'
       workspaceName: 'eco-debandfriends'
-      directory: '${{ github.workspace }}/Detections'
+      directory: '${{ github.workspace }}'
       cloudEnv: 'AzureCloud'
       creds: ${{ secrets.AZURE_SENTINEL_CREDENTIALS_7c071faa79e349aeabd0b9c7e497b1c4 }}
       contentTypes: 'AnalyticsRule,AutomationRule'
