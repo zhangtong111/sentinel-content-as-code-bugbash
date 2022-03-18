@@ -1,10 +1,21 @@
-name: Deploy Content to Azure Sentinel
+name: Deploy Content to eco-connector-test [524a52e4-d526-4d8d-8a49-115078969e80]
+# Note: This workflow will deploy everything in the root directory.
+# To deploy content only from a specific path (for example SentinelContent):
+#   1. Add the target path to the "paths" property like such
+#    paths:
+#    - 'SentinelContent/**'
+#    - '!.github/workflows/**'
+#    - '.github/workflows/sentinel-deploy-524a52e4-d526-4d8d-8a49-115078969e80.yml'
+#   2. Append the path to the directory environment variable below
+#       directory: '${{ github.workspace }}/SentinelContent'
+
 on: 
   push:
     branches: [ bugbash-2 ]
     paths:
-    - 'Detections/**'
-    - '.github/workflows/sentinel-deploy**'
+    - '**'
+    - '!.github/workflows/**'  # this filter prevents other workflow changes from triggering this workflow
+    - '.github/workflows/sentinel-deploy-524a52e4-d526-4d8d-8a49-115078969e80.yml'
 
 jobs:
   deploy-content:
@@ -12,9 +23,14 @@ jobs:
     env:
       resourceGroupName: 'eco-connector-test'
       workspaceName: 'eco-connector-test'
-      directory: '${{ github.workspace }}/Detections'
+      directory: '${{ github.workspace }}'
       cloudEnv: 'AzureCloud'
       creds: ${{ secrets.AZURE_SENTINEL_CREDENTIALS_524a52e4d5264d8d8a49115078969e80 }}
+      contentTypes: 'AnalyticsRule,AutomationRule'
+      branch: 'bugbash-2'
+      sourceControlId: '524a52e4-d526-4d8d-8a49-115078969e80'
+      githubAuthToken: ${{ secrets.GITHUB_TOKEN }}
+      manualDeployment: 'false'
 
     steps:
     - name: Login to Azure (Attempt 1)
@@ -27,10 +43,8 @@ jobs:
         enable-AzPSSession: true
 
     - name: Wait 30 seconds if login attempt 1 failed
-      uses: juliangruber/sleep-action@v1
       if: ${{ env.cloudEnv == 'AzureCloud' && steps.login1.outcome=='failure' }}
-      with:
-        time: 30s
+      run: powershell Start-Sleep -s 30
     
     - name: Login to Azure (Attempt 2)
       continue-on-error: true
@@ -42,10 +56,8 @@ jobs:
         enable-AzPSSession: true
 
     - name: Wait 30 seconds if login attempt 2 failed
-      uses: juliangruber/sleep-action@v1
       if: ${{ env.cloudEnv == 'AzureCloud' && steps.login2.outcome=='failure' }}
-      with:
-        time: 30s
+      run: powershell Start-Sleep -s 30
     
     - name: Login to Azure (Attempt 3)
       continue-on-error: false
@@ -58,16 +70,10 @@ jobs:
 
     - name: Checkout
       uses: actions/checkout@v1
-
-    - name: Read deployment script
-      id: deploymentScript
-      uses: juliangruber/read-file-action@v1
-      with:
-        path: '${{ github.workspace }}/.github/workflows\azure-sentinel-deploy.ps1'
     
-    - name: Deploy Analytic Rules
+    - name: Deploy Content to Azure Sentinel
       uses: azure/powershell@v1
       with:
         azPSVersion: 'latest'
         inlineScript: |
-          ${{ steps.deploymentScript.outputs.content }}
+          ${{ github.workspace }}//.github/workflows/azure-sentinel-deploy-524a52e4-d526-4d8d-8a49-115078969e80.ps1
