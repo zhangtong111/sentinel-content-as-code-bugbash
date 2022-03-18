@@ -1,0 +1,3 @@
+FileName, CommitSha
+Detections\Valid-SuccessfulSSHBruteForceAttack.json,b5e7fbceba73bcdcfa72db7ddefa4bc9e0e6efb1
+Detections\Valid-BuiltInFusion.json,d7fd58c23276ac1bcb84404f812fc4088886b417
